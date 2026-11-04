@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool quiereSaltar = false;
     private bool enSuelo = false;
     private bool puedeDobleSaltar = false;
+    private MovingPlatform plataformaDebajo; // la plataforma movil que estamos pisando (si hay)
 
     [Header("Estado (solo para mirar)")]
     public int coleccionables = 0;
@@ -129,6 +130,12 @@ public class PlayerController : MonoBehaviour
     {
         enSuelo = HayPiso();
 
+        // Si estamos parados sobre una plataforma movil, nos movemos con ella
+        if (enSuelo && plataformaDebajo != null)
+        {
+            rb.MovePosition(rb.position + plataformaDebajo.movimientoEsteFrame);
+        }
+
         Rotar();
         Mover();
         Saltar();
@@ -201,6 +208,8 @@ public class PlayerController : MonoBehaviour
     // Tira un rayo hacia abajo e ignora los colliders del propio Player
     bool HayPiso()
     {
+        plataformaDebajo = null;
+
         Vector3 origenRayo = transform.position + Vector3.up * 0.5f;
         float largoRayo = alturaPies + 0.5f + 0.15f;
 
@@ -211,6 +220,8 @@ public class PlayerController : MonoBehaviour
             // IsChildOf devuelve true para el Player y todos sus hijos
             if (!golpes[i].collider.transform.IsChildOf(transform))
             {
+                // Guardamos si el piso es una plataforma movil (o hijo de una)
+                plataformaDebajo = golpes[i].collider.GetComponentInParent<MovingPlatform>();
                 return true;
             }
         }
