@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4dd856dc81c3344a04264e391a9461, type: 3}
+  m_Name: Coleccion
+  m_EditorClassIdentifier: Assembly-CSharp::CardCollection
+  todasLasCartas:
+  - {fileID: 11400000, guid: f2e91e8b5a6b9f54d9f696ea9293ede3, type: 2}
+  - {fileID: 11400000, guid: 47dfffc6664e2c34d89f9ac55843ba66, type: 2}
+  - {fileID: 11400000, guid: 555c0a55deea61e4bb9bd213eb18776e, type: 2}
+  - {fileID: 11400000, guid: 3c22c6934c6d25e4aa2b7a3cd2e67a55, type: 2}
+  - {fileID: 11400000, guid: ad9ab54f00aa729408ac9537ab2dd999, type: 2}
+  - {fileID: 11400000, guid: 00ed8aefe2954a341b364585553f90ae, type: 2}
+  - {fileID: 11400000, guid: ffc6351043800d34a84bf0210c0a0249, type: 2}
+  - {fileID: 11400000, guid: c9dacfd88ed0ac24fada20c5680b71c6, type: 2}

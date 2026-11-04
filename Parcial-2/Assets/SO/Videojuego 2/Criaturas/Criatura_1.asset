@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee19adedc6c18e449db84b75ed0e309, type: 3}
+  m_Name: Criatura_1
+  m_EditorClassIdentifier: Assembly-CSharp::CreatureCardData
+  nombre: Criatura 1
+  descripcion: 'bla bla bla
+
+'
+  arte: {fileID: 0}
+  costoRojo: 2
+  costoVerde: 0
+  costoBlanco: 0
+  costoNegro: 0
+  costoAzul: 0
+  costoGenerico: 0
+  ataque: 2
+  vida: 2
+  movimiento: 0
