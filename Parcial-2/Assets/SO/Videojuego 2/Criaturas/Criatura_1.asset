@@ -16,7 +16,7 @@ MonoBehaviour:
   descripcion: 'bla bla bla
 
 '
-  arte: {fileID: 0}
+  arte: {fileID: 21300000, guid: 7da6b1fe577cad449929ec98d95bd34e, type: 3}
   costoRojo: 2
   costoVerde: 0
   costoBlanco: 0

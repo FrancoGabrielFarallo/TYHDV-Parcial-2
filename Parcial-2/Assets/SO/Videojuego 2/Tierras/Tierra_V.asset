@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LandCardData
   nombre: Tierra Verde
   descripcion: 
-  arte: {fileID: 0}
+  arte: {fileID: 21300000, guid: 82e5a174474d515478f16e52d4cf98c3, type: 3}
   costoRojo: 0
   costoVerde: 0
   costoBlanco: 0

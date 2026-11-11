@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LandCardData
   nombre: Tierra Roja
   descripcion: 
-  arte: {fileID: 0}
+  arte: {fileID: 21300000, guid: 2c8d7c66ccb148a4889a53c4e4d25d9c, type: 3}
   costoRojo: 0
   costoVerde: 0
   costoBlanco: 0

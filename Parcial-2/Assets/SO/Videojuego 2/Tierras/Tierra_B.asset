@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LandCardData
   nombre: Tierra Blanca
   descripcion: 
-  arte: {fileID: 0}
+  arte: {fileID: 21300000, guid: 318196c97f5896247bccb4fcc61bbf3c, type: 3}
   costoRojo: 0
   costoVerde: 0
   costoBlanco: 0
