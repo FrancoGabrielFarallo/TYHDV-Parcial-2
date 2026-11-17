@@ -74,7 +74,9 @@ public class CameraController : MonoBehaviour
             return;
         }
 
-        float giro = velocidadRotacion * Time.deltaTime;
+        // La sensibilidad la guarda el menu de opciones (1 = normal)
+        float sensibilidad = PlayerPrefs.GetFloat("Sensibilidad", 1f);
+        float giro = velocidadRotacion * sensibilidad * Time.deltaTime;
 
         // Bordes izquierdo y derecho
         if (mouse.x <= margenBorde)

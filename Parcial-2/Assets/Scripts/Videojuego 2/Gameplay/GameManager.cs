@@ -40,7 +40,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text textoBotonSiguiente;
     public GameObject panelFinDelJuego;
     public TMP_Text textoFinDelJuego;
-    public string escenaDeckBuilder = "DeckBuilder";
+    [Tooltip("Escena a la que va el botón del panel de fin de partida")]
+    public string escenaMenuPrincipal = "MainMenuV2";
 
     [Header("Estado (solo para mirar)")]
     public Fase faseActual = Fase.IniciarTurno;
@@ -64,6 +65,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        // Por si venimos de una escena que quedó pausada
+        Time.timeScale = 1f;
+
         if (panelFinDelJuego != null) panelFinDelJuego.SetActive(false);
         botonSiguiente.onClick.AddListener(BotonSiguientePresionado);
         ComenzarPartida();
@@ -747,12 +751,20 @@ public class GameManager : MonoBehaviour
     // Para los botones del panel de fin de juego
     public void Reiniciar()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        CargadorDeEscenas.Cargar(SceneManager.GetActiveScene().name);
     }
 
+    // Botón del panel de fin de partida (ganar o perder)
+    public void VolverAlMenuPrincipal()
+    {
+        CargadorDeEscenas.Cargar(escenaMenuPrincipal);
+    }
+
+    // Se deja con el nombre viejo para que el botón que ya tenías
+    // conectado siga funcionando: ahora también va al menú principal.
     public void VolverAlDeckBuilder()
     {
-        SceneManager.LoadScene(escenaDeckBuilder);
+        VolverAlMenuPrincipal();
     }
 
     // =================================================================

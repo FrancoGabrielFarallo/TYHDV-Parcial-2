@@ -7,7 +7,7 @@ public class RisingHazard : MonoBehaviour
     public HazardData datos;
 
     [Header("Referencias")]
-    public DefeatUI uiDerrota; // si queda vacio, la busca en la escena
+    public EndGameUI pantallaFinal; // si queda vacio, la busca en la escena
 
     private PlayerController jugador;
     private Collider col;
@@ -18,9 +18,9 @@ public class RisingHazard : MonoBehaviour
     {
         jugador = FindFirstObjectByType<PlayerController>();
 
-        if (uiDerrota == null)
+        if (pantallaFinal == null)
         {
-            uiDerrota = FindFirstObjectByType<DefeatUI>();
+            pantallaFinal = FindFirstObjectByType<EndGameUI>();
         }
 
         col = GetComponent<Collider>();
@@ -31,7 +31,7 @@ public class RisingHazard : MonoBehaviour
 
         if (datos == null) Debug.LogWarning("RisingHazard: falta asignar el HazardData.");
         if (jugador == null) Debug.LogWarning("RisingHazard: no se encontro el Player.");
-        if (uiDerrota == null) Debug.LogWarning("RisingHazard: no se encontro la DefeatUI.");
+        if (pantallaFinal == null) Debug.LogWarning("RisingHazard: no se encontro la EndGameUI.");
         if (col == null) Debug.LogWarning("RisingHazard: el cubo necesita un Collider.");
     }
 
@@ -84,9 +84,9 @@ public class RisingHazard : MonoBehaviour
         yaPerdio = true;
         pc.enabled = false; // el jugador deja de responder al teclado
 
-        if (uiDerrota != null)
+        if (pantallaFinal != null)
         {
-            uiDerrota.Mostrar();
+            pantallaFinal.MostrarDerrota();
         }
     }
 

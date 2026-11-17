@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeckData
   nombreMazo: Test
   entradas:
-  - carta: {fileID: 11400000, guid: 3c22c6934c6d25e4aa2b7a3cd2e67a55, type: 2}
-    cantidad: 32
   - carta: {fileID: 11400000, guid: 00ed8aefe2954a341b364585553f90ae, type: 2}
-    cantidad: 20
+    cantidad: 4
   - carta: {fileID: 11400000, guid: ffc6351043800d34a84bf0210c0a0249, type: 2}
     cantidad: 4
   - carta: {fileID: 11400000, guid: c9dacfd88ed0ac24fada20c5680b71c6, type: 2}
     cantidad: 4
+  - carta: {fileID: 11400000, guid: 3c22c6934c6d25e4aa2b7a3cd2e67a55, type: 2}
+    cantidad: 48

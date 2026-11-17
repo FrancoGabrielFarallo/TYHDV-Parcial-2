@@ -81,6 +81,10 @@ public class PlayerController : MonoBehaviour
     // ---------- UPDATE: solo leemos el teclado ----------
     void Update()
     {
+        // Si el juego esta pausado (opciones o pantalla final) no leemos el teclado,
+        // asi no se "guarda" un salto para cuando se despausa
+        if (Time.timeScale == 0f) return;
+
         ActualizarAumentos();
 
         Keyboard teclado = Keyboard.current;

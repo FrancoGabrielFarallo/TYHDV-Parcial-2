@@ -31,7 +31,10 @@ public class DeckBuilderManager : MonoBehaviour
     public TMP_Text textoContador;
     public TMP_Text textoMensaje;
     public Button botonJugar;
-    public string escenaJuego = "Juego";
+
+    [Header("Escenas (el nombre tiene que ser EXACTO)")]
+    public string escenaPartida = "V2MainScene";
+    public string escenaMenuPrincipal = "MainMenuV2";
 
     private List<CardView> vistas = new List<CardView>();
 
@@ -47,6 +50,15 @@ public class DeckBuilderManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
+
+        // Si falta algo en el Inspector, avisamos y no seguimos
+        if (!ReferenciasCompletas())
+        {
+            Mensaje("Faltan referencias en DeckBuilderManager. Mirá la Console.");
+            return;
+        }
+
         // Creamos una carta en pantalla por cada carta de la colección
         for (int i = 0; i < coleccion.todasLasCartas.Count; i++)
         {
@@ -67,6 +79,19 @@ public class DeckBuilderManager : MonoBehaviour
 
         Mensaje("Clic izquierdo: agregar. Clic derecho: quitar.");
         Actualizar();
+    }
+
+    // Revisa uno por uno los campos del Inspector y dice cuál falta
+    bool ReferenciasCompletas()
+    {
+        bool todoBien = true;
+        if (coleccion == null) { Debug.LogError("DeckBuilderManager: falta asignar 'Coleccion'."); todoBien = false; }
+        if (jugador == null) { Debug.LogError("DeckBuilderManager: falta asignar 'Jugador' (PlayerData)."); todoBien = false; }
+        if (jugador != null && jugador.mazo == null) { Debug.LogError("El PlayerData '" + jugador.name + "' no tiene un Mazo asignado."); todoBien = false; }
+        if (reglas == null) { Debug.LogError("DeckBuilderManager: falta asignar 'Reglas'."); todoBien = false; }
+        if (prefabCarta == null) { Debug.LogError("DeckBuilderManager: falta asignar 'Prefab Carta'."); todoBien = false; }
+        if (contenedorColeccion == null) { Debug.LogError("DeckBuilderManager: falta asignar 'Contenedor Coleccion' (el Content del Scroll View)."); todoBien = false; }
+        return todoBien;
     }
 
     // =================================================================
@@ -107,6 +132,7 @@ public class DeckBuilderManager : MonoBehaviour
     // =================================================================
     public void BotonVaciar()
     {
+        if (!ReferenciasCompletas()) return;
         jugador.mazo.Vaciar();
         Mensaje("Mazo vacío.");
         Actualizar();
@@ -115,6 +141,7 @@ public class DeckBuilderManager : MonoBehaviour
     // Completa hasta 60 con tierras de los colores que usa el mazo
     public void BotonRellenarConTierras()
     {
+        if (!ReferenciasCompletas()) return;
         DeckData mazo = jugador.mazo;
 
         // 1) Contamos cuántos símbolos de cada color piden las cartas del mazo
@@ -175,6 +202,7 @@ public class DeckBuilderManager : MonoBehaviour
 
     public void BotonJugar()
     {
+        if (!ReferenciasCompletas()) return;
         if (jugador.mazo.ContarCartas() != reglas.cartasEnElMazo)
         {
             Mensaje("El mazo tiene que tener exactamente " + reglas.cartasEnElMazo + " cartas.");
@@ -185,7 +213,13 @@ public class DeckBuilderManager : MonoBehaviour
         // En el editor, marcamos el SO como modificado para que se guarde en el disco
         UnityEditor.EditorUtility.SetDirty(jugador.mazo);
 #endif
-        SceneManager.LoadScene(escenaJuego);
+        CargadorDeEscenas.Cargar(escenaPartida);
+    }
+
+    // Opcional: un botón "Volver" que lleva al menú principal
+    public void BotonVolverAlMenu()
+    {
+        CargadorDeEscenas.Cargar(escenaMenuPrincipal);
     }
 
     // =================================================================
